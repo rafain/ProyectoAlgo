@@ -28,9 +28,20 @@ def mergeSort(lis):
     despl = 0
 
 def bubbleSort(lis):
-    comp = 0
-    inter = 0
-    despl = 0
+      comp = 0
+  inter = 0
+  despl = 0
+
+  n = len(lis)
+  for i in range(n-1):
+    for i in range(n-1):
+      comp += 1
+      if (lis[i] > lis[i+1]):
+        inter += 1
+        prob = lis[i+1]
+        lis[i+1] = lis[i]
+        lis[i] = prob
+  return(comp,inter)
 
 def insertionSort(lis):
     comp = 0
