@@ -7,32 +7,32 @@
 #
 # 13-nov-2018
 
-def quickSort(list):
+def quickSort(lis):
     comp = 0
     inter = 0
     despl = 0
 
-def selectionSort(list):
+def selectionSort(lis):
     comp = 0
     inter = 0
     despl = 0
 
-def heapSort(list):
+def heapSort(lis):
     comp = 0
     inter = 0
     despl = 0
 
-def mergeSort(list):
+def mergeSort(lis):
     comp = 0
     inter = 0
     despl = 0
 
-def bubbleSort(list):
+def bubbleSort(lis):
     comp = 0
     inter = 0
     despl = 0
 
-def insertionSort(list):
+def insertionSort(lis):
     comp = 0
     inter = 0
     despl = 0
