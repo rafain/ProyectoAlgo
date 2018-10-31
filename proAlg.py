@@ -29,7 +29,7 @@ def selectionSort(lis):
     lis[max] = lis[j]
     lis[j] = prob
 
-  return(comp,inter)
+  return (comp, inter, despl)
 
 
 def heapSort(lis):
@@ -57,7 +57,7 @@ def bubbleSort(lis):
         prob = lis[i+1]
         lis[i+1] = lis[i]
         lis[i] = prob
-  return(comp,inter)
+  return (comp, inter, despl)
 
 
 def insertionSort(lis):
