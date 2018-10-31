@@ -13,7 +13,7 @@ def quickSort(lis):
     despl = 0
 
 def selectionSort(lis):
-      comp = 0
+  comp = 0
   inter = 0
   despl = 0
 
@@ -42,6 +42,7 @@ def mergeSort(lis):
     inter = 0
     despl = 0
 
+    
 def bubbleSort(lis):
       comp = 0
   inter = 0
@@ -60,9 +61,23 @@ def bubbleSort(lis):
 
 
 def insertionSort(lis):
-    comp = 0
-    inter = 0
-    despl = 0
+  comp = 0
+  inter = 0
+  despl = 0
+
+  for j in range(1, len(lis)):
+    val = lis[j]
+    pos = j
+    comp += 2
+    while(pos > 0 and val < lis[pos-1]):
+      comp += 2
+      lis[pos] = lis[pos-1]
+      despl += 1
+      pos = pos-1
+    
+    lis[pos] = val
+    
+  return(comp,inter,despl)
 
 
 def main():
