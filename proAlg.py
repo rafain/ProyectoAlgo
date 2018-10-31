@@ -44,7 +44,7 @@ def mergeSort(lis):
 
     
 def bubbleSort(lis):
-      comp = 0
+  comp = 0
   inter = 0
   despl = 0
 
