@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Proyecto de comparación de algoritmos de ordenamiento.
 # Realizado por:
 #   Jesús Perea
@@ -81,14 +82,46 @@ def selectionSort(lis):
   return (comp, inter, despl)
 
 
+def parent(index):
+    return int((index-1)/2)
 
-def heapSort(lis):
+def leftChild(index):
+    return (index*2)+1
+
+def rightChild(index):
+    return (index*2)+2
+
+def swap(arr, parent, child):
+    if child>parent:
+        temp=arr[parent]
+        arr[parent]=arr[child]
+        arr[child]=temp
+
+def heapify(arr, n, parent):                
+    toSwap = parent
+ 
+    if leftChild(parent) < n and arr[toSwap] < arr[leftChild(parent)]:
+        toSwap = leftChild(parent)
+ 
+    if rightChild(parent) < n and arr[toSwap] < arr[rightChild(parent)]:
+        toSwap = rightChild(parent)
+ 
+    if toSwap != parent:
+        swap(arr,parent,toSwap)
+        heapify(arr, n, toSwap)
+        
+def heapSort(arr):
     comp = 0
     inter = 0
     despl = 0
 
-    
-    
+	for i in range(len(arr), -1, -1):
+		heapify(arr, len(arr), i)
+		
+	for i in range(len(arr)-1, 0, -1):
+		swap(arr,0,i)
+		heapify(arr, i, 0)
+
 def mergeSort(lis):
   comp = 0
   inter = 0
@@ -172,7 +205,50 @@ def insertionSort(lis):
   return(comp,inter,despl)
 
 
+def llenarLista():
+  arr = []
+  x = int(input("¿Cuántos números deseas agregar?\n"))
+  for i in range(x):
+    try:
+      y = int(input("Escribe el número: "))
+      arr.append(y)
+    except Exception:
+      print("Introduce un valor correcto. Vuelve a iniciar")
+      arr = llenarLista()
+      break
+  return arr
+
+
+
 def main():
-    
+  lista = []
+  print("\n*****************************************\n")
+  print("Bienvenido. En este proyecto podrás comparar los diferentes algoritmos de ordenamiento. Por favor seleccion una opción:\n")
+
+  print("1. Introducir los números.")
+  print("2. Generar los números de manera aleatoria\n")
+
+  print("*****************************************\n")
+
+  try:
+    aleatoria = int(input("Elije tu opción[1 2]: "))
+  except Exception:
+    print("Introduzca una opción válida")
+    aleatoria = 0
+
+  while(True):
+    if(aleatoria == 1):
+      lista = llenarLista()
+      break; 
+    elif(aleatoria == 2):
+      break
+    else:
+      print("El valor dado es incorrecto. Por favor otorgue una opción válida")
+      try:
+        aleatoria = int(input("Elije tu opción[1 2]: "))
+      except Exception:
+        print("Introduzca una opción válida")
+        aleatoria = 0
+  print(lista)
 
 main()
