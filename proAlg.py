@@ -8,7 +8,10 @@
 #
 # 13-nov-2018
 
-#Hello Everybody. This is a git test
+from __future__ import division
+from __future__ import print_function
+from random import randint
+
 def quickSort(lis, first, last):
   comp = 0
   inter = 0
@@ -114,13 +117,12 @@ def heapSort(arr):
     comp = 0
     inter = 0
     despl = 0
-
-	for i in range(len(arr), -1, -1):
-		heapify(arr, len(arr), i)
-		
-	for i in range(len(arr)-1, 0, -1):
-		swap(arr,0,i)
-		heapify(arr, i, 0)
+    for i in range(len(arr), -1, -1):
+      heapify(arr, len(arr), i)
+      
+    for i in range(len(arr)-1, 0, -1):
+      swap(arr,0,i)
+      heapify(arr, i, 0)
 
 def mergeSort(lis):
   comp = 0
@@ -218,7 +220,12 @@ def llenarLista():
       break
   return arr
 
-
+def numerosAleatorios():
+  arr = []
+  print("Se generaran un millón de números aleatorios. Por favor espere\n")
+  for i in range(1000000):
+    arr.append(randint(0,1000000))
+  return arr
 
 def main():
   lista = []
@@ -226,12 +233,13 @@ def main():
   print("Bienvenido. En este proyecto podrás comparar los diferentes algoritmos de ordenamiento. Por favor seleccion una opción:\n")
 
   print("1. Introducir los números.")
-  print("2. Generar los números de manera aleatoria\n")
+  print("2. Generar los números de manera aleatoria")
+  print("3. Salir\n")
 
   print("*****************************************\n")
 
   try:
-    aleatoria = int(input("Elije tu opción[1 2]: "))
+    aleatoria = int(input("Elije tu opción[1 2 3]: "))
   except Exception:
     print("Introduzca una opción válida")
     aleatoria = 0
@@ -241,14 +249,18 @@ def main():
       lista = llenarLista()
       break; 
     elif(aleatoria == 2):
+      lista = numerosAleatorios()
+      print("Gracias por esperar. Tu números han sido generados\n")
+      break
+    elif(aleatoria == 3):
       break
     else:
       print("El valor dado es incorrecto. Por favor otorgue una opción válida")
       try:
-        aleatoria = int(input("Elije tu opción[1 2]: "))
+        aleatoria = int(input("Elije tu opción[1 2 3]: "))
       except Exception:
         print("Introduzca una opción válida")
         aleatoria = 0
-  print(lista)
+  #print(lista)
 
 main()
