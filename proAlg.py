@@ -12,8 +12,7 @@ from __future__ import division
 from __future__ import print_function
 from random import randint
 
-def quickSort(lis2, first, last):
-  lis = lis2.copy()
+def quickSort(lis, first, last):
   comp = 0
   inter = 0
   despl = 0
@@ -66,8 +65,7 @@ def quickSortH(lis, first, last):
 
 
 
-def selectionSort(lis2):
-  lis = lis2.copy()
+def selectionSort(lis):
   comp = 0
   inter = 0
   despl = 0
@@ -126,8 +124,7 @@ def heapSort(arr):
       swap(arr,0,i)
       heapify(arr, i, 0)
 
-def mergeSort(lis2):
-  lis = lis2.copy()
+def mergeSort(lis):
   comp = 0
   inter = 0
   despl = 0
@@ -171,8 +168,7 @@ def merge(lis, lis2):
 
 
 
-def bubbleSort(lis2):
-  lis = lis2.copy()
+def bubbleSort(lis):
   comp = 0
   inter = 0
   despl = 0
@@ -191,8 +187,7 @@ def bubbleSort(lis2):
 
 
 
-def insertionSort(lis2):
-  lis = lis2.copy()
+def insertionSort(lis):
   comp = 0
   inter = 0
   despl = 0
