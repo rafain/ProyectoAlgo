@@ -302,8 +302,8 @@ def main():
     print("Notación O de Comparaciones: ")
     print("Notación O de Intercambios: ")
     
-  print("Realizadas.  Comparaciones: "+ compBS+ " Intercambios: " + interBS + "Desplazamientos: " + desplBS)
-  print("Tiempo de ejecución" + end-start)
+  print("Realizadas.  Comparaciones: "+ str(compBS)+ " Intercambios: " + str(interBS) + " Desplazamientos: " + str(desplBS))
+  print("Tiempo de ejecución" + str(end-start))
 
 
 
