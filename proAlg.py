@@ -254,6 +254,7 @@ def numerosAleatorios():
   return arr
 
 def main():
+  global aleatoria
   lista = []
   print("\n*****************************************\n")
   print("Bienvenido. En este proyecto podrás comparar los diferentes algoritmos de ordenamiento. Por favor seleccion una opción:\n")
@@ -289,15 +290,17 @@ def main():
         aleatoria = 0
 
   #Corrida para Bubble Sort
+  if(aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("\nBubble Sort: \n")
+
   lisBS = list(lista) 
   start = time.time()
   compBS, interBS, desplBS = bubbleSort(lisBS)
   end = time.time()
 
   if (aleatoria == 1):
-    print("\nBubble Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
@@ -314,15 +317,16 @@ def main():
   
 
   #Corrida para Selection Sort
+  if (aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("Selection Sort: \n")
   lisSS = list(lista)
   start = time.time()
   compSS, interSS, desplSS = selectionSort(lisSS)
   end = time.time()
 
   if (aleatoria == 1):
-    print("Selection Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
@@ -338,15 +342,16 @@ def main():
 
 
   #Corrida Insertion Sort
+  if (aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("Insertion Sort: \n")
   lisIS = list(lista)
   start = time.time()
   compIS, interIS, desplIS = insertionSort(lisIS)
   end = time.time()
 
   if (aleatoria == 1):
-    print("Insertion Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
@@ -359,18 +364,17 @@ def main():
   elif(aleatoria == 2):
     print("InsertionSort  |             "+ str(compIS)+"        |              "+ str(interIS) +"       |             "+str(desplIS)+"             |            "+ str(end-start))
 
-
-
   #Corrida para Merge Sort
+  if (aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("Merge Sort: \n")
   lisMS = list(lista)    
   start = time.time()
   lisMSord, compMS, interMS, desplMS = mergeSort(lisMS)
   end = time.time()
 
   if (aleatoria == 1):
-    print("Merge Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
@@ -386,15 +390,16 @@ def main():
 
 
   #Corrida para HeapSort
+  if (aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("Heap Sort: \n")
   lisHS = list(lista)
   start = time.time()
   compHS, interHS, desplHS = 0,0,0
   end = time.time()
 
   if (aleatoria == 1):
-    print("Heap Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
@@ -410,15 +415,16 @@ def main():
 
 
   #Corrida para Quick Sort
+  if (aleatoria == 1):
+    print("\n**********************************************************\n")
+    print("Quick Sort: \n")
   lisQS = list(lista)
   start = time.time()
   compQS, interQS, desplQS = 0,0,0
   end = time.time()
 
   if (aleatoria == 1):
-    print("Quick Sort: ")
-
-    print("\n**********************************************************\n")
+    print("\n")
     print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
     print("Notación O     |                           |                           |                           |") 
     print("Complejidad    |                           |                           |                           |") 
