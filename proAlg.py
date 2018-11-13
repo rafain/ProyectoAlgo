@@ -249,8 +249,8 @@ def llenarLista():
 def numerosAleatorios():
   arr = []
   print("Se generaran un millón de números aleatorios. Por favor espere\n")
-  for i in range(1000000):
-    arr.append(randint(0,1000000))
+  for i in range(1000):
+    arr.append(randint(0,1000))
   return arr
 
 def main():
@@ -289,44 +289,148 @@ def main():
         aleatoria = 0
 
   #Corrida para Bubble Sort
-  print("Bubble Sort: ")
-  lisBS = lista.copy()
-
+  lisBS = list(lista) 
   start = time.time()
   compBS, interBS, desplBS = bubbleSort(lisBS)
   end = time.time()
 
-  print("")
-  print("**********************************************************")
   if (aleatoria == 1):
-    print("Notación O de Comparaciones: ")
-    print("Notación O de Intercambios: ")
-    
-  print("Realizadas.  Comparaciones: "+ str(compBS)+ " Intercambios: " + str(interBS) + " Desplazamientos: " + str(desplBS))
-  print("Tiempo de ejecución" + str(end-start))
+    print("\nBubble Sort: ")
+
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
+
+    print("Realizadas     |             "+ str(compBS)+"             |              "+ str(interBS) +"            |             "+str(desplBS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisBS)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |       Tiempo")
+    print("BubbleSort     |             "+ str(compBS)+"        |              "+ str(interBS) +"       |             "+str(desplBS)+"             |            "+ str(end-start))
+  
+
+  #Corrida para Selection Sort
+  lisSS = list(lista)
+  start = time.time()
+  compSS, interSS, desplSS = selectionSort(lisSS)
+  end = time.time()
+
+  if (aleatoria == 1):
+    print("Selection Sort: ")
+
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
+
+    print("Realizadas     |             "+ str(compSS)+"             |              "+ str(interSS) +"            |             "+str(desplSS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisSS)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+
+    print("SelectionSort  |             "+ str(compSS)+"        |              "+ str(interSS) +"       |             "+str(desplSS)+"             |            "+ str(end-start))
+
+
+  #Corrida Insertion Sort
+  lisIS = list(lista)
+  start = time.time()
+  compIS, interIS, desplIS = insertionSort(lisIS)
+  end = time.time()
+
+  if (aleatoria == 1):
+    print("Insertion Sort: ")
+
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
+
+    print("Realizadas     |             "+ str(compIS)+"             |              "+ str(interIS) +"            |             "+str(desplIS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisIS)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+    print("InsertionSort  |             "+ str(compIS)+"        |              "+ str(interIS) +"       |             "+str(desplIS)+"             |            "+ str(end-start))
 
 
 
-   #Variables y lista para Selection Sort
-  lisSS = lista.copy()
-  compSS, interSS, desplSS = 0,0,0
+  #Corrida para Merge Sort
+  lisMS = list(lista)    
+  start = time.time()
+  lisMSord, compMS, interMS, desplMS = mergeSort(lisMS)
+  end = time.time()
 
-  #Variables y lista para Insertion Sort
-  lisIS = lista.copy()
-  compIS, interIS, desplIS = 0,0,0
+  if (aleatoria == 1):
+    print("Merge Sort: ")
 
-  #Variables y lista para Merge Sort
-  lisMS = lista.copy()
-  compMS, interMS, desplMS = 0,0,0
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
 
-  #Variables y lista para Heap Sort
-  lisHS = lista.copy()
+    print("Realizadas     |             "+ str(compMS)+"             |              "+ str(interMS) +"            |             "+str(desplMS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisMSord)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+
+    print("MergeSort      |             "+ str(compMS)+"        |              "+ str(interMS) +"       |             "+str(desplMS)+"             |            "+ str(end-start))
+
+
+  #Corrida para HeapSort
+  lisHS = list(lista)
+  start = time.time()
   compHS, interHS, desplHS = 0,0,0
+  end = time.time()
 
-  #Variables y lista para Quick Sort
-  lisQS = lista.copy()
+  if (aleatoria == 1):
+    print("Heap Sort: ")
+
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
+
+    print("Realizadas     |             "+ str(compHS)+"             |              "+ str(interHS) +"            |             "+str(desplHS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisHS)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+
+    print("HeapSort      |             "+ str(compHS)+"        |              "+ str(interHS) +"       |             "+str(desplHS)+"             |            "+ str(end-start))
+
+
+  #Corrida para Quick Sort
+  lisQS = list(lista)
+  start = time.time()
   compQS, interQS, desplQS = 0,0,0
+  end = time.time()
 
-  #print(lista)
+  if (aleatoria == 1):
+    print("Quick Sort: ")
+
+    print("\n**********************************************************\n")
+    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    print("Notación O     |                           |                           |                           |") 
+    print("Complejidad    |                           |                           |                           |") 
+    print("----------------------------------------------------------------------------------------------------")
+
+    print("Realizadas     |             "+ str(compQS)+"             |              "+ str(interQS) +"            |             "+str(desplQS)+"             |")
+    print("Tiempo de ejecución: " + str(end-start)+"\n")
+    print(lisQS)
+    print("\n**********************************************************\n")
+  elif(aleatoria == 2):
+
+    print("QuickSort      |             "+ str(compQS)+"        |              "+ str(interQS) +"       |             "+str(desplQS)+"             |            "+ str(end-start))
+
 
 main()
