@@ -253,7 +253,7 @@ def llenarLista():
 def numerosAleatorios():
   arr = []
   print("Se generaran un millón de números aleatorios. Por favor espere\n")
-  for i in range(1000): #100000
+  for i in range(10000): #100000
     arr.append(randint(0,1000000)) 
   return arr
 
