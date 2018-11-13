@@ -10,6 +10,9 @@
 
 from __future__ import division
 from __future__ import print_function
+from tabulate import tabulate
+from prettytable import PrettyTable
+from texttable import Texttable
 from random import randint
 import time
 aleatoria = 0
@@ -66,7 +69,8 @@ def quickSortH(lis, first, last):
   inter += 1
   lis[first] = lis[right]
   lis[right] = pivot
-  print(lis)
+  if(aleatoria == 1):
+    print(lis)
   return (comp, inter, despl, right)
 #Aqui termina QuickSort
 
@@ -122,6 +126,7 @@ def heapSort(lis):
     n = len(lis) 
     comp = 0
     swaps = 0
+    inter = 0
 
     for i in range(n, -1, -1): 
         comp2, swaps2 = (heapify(lis, n, i)) 
@@ -133,9 +138,9 @@ def heapSort(lis):
         comp3, swaps3 = (heapify(lis, i, 0))
         comp += comp3
         swaps += swaps3
-        if aleatoria == 0:
+        if aleatoria == 1:
             print(lis)
-    return(lis, comp, swaps)
+    return(lis, comp, swaps, inter)
 #Aquí termina HEAP SORT
 
 
@@ -148,7 +153,6 @@ def mergeSort(lis):
   if len(lis) <= 1:
     if (aleatoria == 1):
       print(lis)
-
     return (lis, comp, inter, despl)
   else:
     split = len(lis)//2
@@ -249,8 +253,8 @@ def llenarLista():
 def numerosAleatorios():
   arr = []
   print("Se generaran un millón de números aleatorios. Por favor espere\n")
-  for i in range(1000):
-    arr.append(randint(0,1000))
+  for i in range(1000): #100000
+    arr.append(randint(0,1000000)) 
   return arr
 
 def main():
@@ -290,6 +294,9 @@ def main():
         aleatoria = 0
 
   #Corrida para Bubble Sort
+  table = PrettyTable(["", 'Comparaciones', 'Intercambios','Desplazamientos', 'Tiempo'])
+  
+
   if(aleatoria == 1):
     print("\n**********************************************************\n")
     print("\nBubble Sort: \n")
@@ -301,19 +308,27 @@ def main():
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])  
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compBS)+"             |              "+ str(interBS) +"            |             "+str(desplBS)+"             |")
+    # print("Realizadas     |             "+ str(compBS)+"             |              "+ str(interBS) +"            |             "+str(desplBS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisBS)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
 
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |       Tiempo")
-    print("BubbleSort     |             "+ str(compBS)+"        |              "+ str(interBS) +"       |             "+str(desplBS)+"             |            "+ str(end-start))
+    #print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |       Tiempo")
+    table.add_row(['BubbleSort', str(compBS), str(interBS), str(desplBS),str(end-start)])
+    #print(table)
+    #print(tabulate([['BubbleSort', str(compBS), str(interBS), str(desplBS),str(end-start)]], headers=["","Comparaciones", "Intercambios", "Desplazamiento", "Tiempo"]))
+    #print("BubbleSort     |             "+ str(compBS)+"        |              "+ str(interBS) +"       |             "+str(desplBS)+"             |            "+ str(end-start))
   
 
   #Corrida para Selection Sort
@@ -327,18 +342,25 @@ def main():
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compSS)+"             |              "+ str(interSS) +"            |             "+str(desplSS)+"             |")
+    # print("Realizadas     |             "+ str(compSS)+"             |              "+ str(interSS) +"            |             "+str(desplSS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisSS)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
-
-    print("SelectionSort  |             "+ str(compSS)+"        |              "+ str(interSS) +"       |             "+str(desplSS)+"             |            "+ str(end-start))
+    table.add_row(['SelectionSort', str(compSS), str(interSS), str(desplSS),str(end-start)])
+    #print(table)
+    #print(tabulate([['SelectionSort', str(compSS), str(interSS), str(desplSS)]], headers=["","","",""]))
+    #print("SelectionSort  |             "+ str(compSS)+"        |              "+ str(interSS) +"       |             "+str(desplSS)+"             |            "+ str(end-start))
 
 
   #Corrida Insertion Sort
@@ -352,17 +374,23 @@ def main():
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compIS)+"             |              "+ str(interIS) +"            |             "+str(desplIS)+"             |")
+    # print("Realizadas     |             "+ str(compIS)+"             |              "+ str(interIS) +"            |             "+str(desplIS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisIS)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
-    print("InsertionSort  |             "+ str(compIS)+"        |              "+ str(interIS) +"       |             "+str(desplIS)+"             |            "+ str(end-start))
+    table.add_row(['InsertionSort', str(compIS), str(interIS), str(desplIS),str(end-start)])
+    #print("InsertionSort  |             "+ str(compIS)+"        |              "+ str(interIS) +"       |             "+str(desplIS)+"             |            "+ str(end-start))
 
   #Corrida para Merge Sort
   if (aleatoria == 1):
@@ -375,18 +403,23 @@ def main():
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compMS)+"             |              "+ str(interMS) +"            |             "+str(desplMS)+"             |")
+    # print("Realizadas     |             "+ str(compMS)+"             |              "+ str(interMS) +"            |             "+str(desplMS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisMSord)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
-
-    print("MergeSort      |             "+ str(compMS)+"        |              "+ str(interMS) +"       |             "+str(desplMS)+"             |            "+ str(end-start))
+    table.add_row(['MergeSort', str(compMS), str(interMS), str(desplMS),str(end-start)])
+    #print("MergeSort      |             "+ str(compMS)+"        |              "+ str(interMS) +"       |             "+str(desplMS)+"             |            "+ str(end-start))
 
 
   #Corrida para HeapSort
@@ -395,23 +428,28 @@ def main():
     print("Heap Sort: \n")
   lisHS = list(lista)
   start = time.time()
-  compHS, interHS, desplHS = 0,0,0
+  liaHS, compHS, interHS, desplHS = heapSort(lisHS)
   end = time.time()
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compHS)+"             |              "+ str(interHS) +"            |             "+str(desplHS)+"             |")
+    # print("Realizadas     |             "+ str(compHS)+"             |              "+ str(interHS) +"            |             "+str(desplHS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisHS)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
-
-    print("HeapSort      |             "+ str(compHS)+"        |              "+ str(interHS) +"       |             "+str(desplHS)+"             |            "+ str(end-start))
+    table.add_row(['HeapSort', str(compHS), str(interHS), str(desplHS),str(end-start)])
+    #print("HeapSort      |             "+ str(compHS)+"        |              "+ str(interHS) +"       |             "+str(desplHS)+"             |            "+ str(end-start))
 
 
   #Corrida para Quick Sort
@@ -420,23 +458,28 @@ def main():
     print("Quick Sort: \n")
   lisQS = list(lista)
   start = time.time()
-  compQS, interQS, desplQS = 0,0,0
+  compQS, interQS, desplQS = quickSort(lisQS, 0, len(lisQS)-1)
   end = time.time()
 
   if (aleatoria == 1):
     print("\n")
-    print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
-    print("Notación O     |                           |                           |                           |") 
-    print("Complejidad    |                           |                           |                           |") 
-    print("----------------------------------------------------------------------------------------------------")
+    tableCM = Texttable()
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
+    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])
+    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    print(tableCM.draw())
+    # print("               |       Comparaciones       |       Intercambios        |     Desplazamiento        |")
+    # print("Notación O     |                           |                           |                           |") 
+    # print("Complejidad    |                           |                           |                           |") 
+    # print("----------------------------------------------------------------------------------------------------")
 
-    print("Realizadas     |             "+ str(compQS)+"             |              "+ str(interQS) +"            |             "+str(desplQS)+"             |")
+    # print("Realizadas     |             "+ str(compQS)+"             |              "+ str(interQS) +"            |             "+str(desplQS)+"             |")
     print("Tiempo de ejecución: " + str(end-start)+"\n")
     print(lisQS)
     print("\n**********************************************************\n")
   elif(aleatoria == 2):
-
-    print("QuickSort      |             "+ str(compQS)+"        |              "+ str(interQS) +"       |             "+str(desplQS)+"             |            "+ str(end-start))
-
+    table.add_row(['QuickSort', str(compQS), str(interQS), str(desplQS),str(end-start)])
+    #print("QuickSort      |             "+ str(compQS)+"        |              "+ str(interQS) +"       |             "+str(desplQS)+"             |            "+ str(end-start))
+    print(table)
 
 main()
