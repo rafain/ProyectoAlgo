@@ -1,19 +1,10 @@
-#encoding: utf-8
-# Proyecto de comparación de algoritmos de ordenamiento.
-# Realizado por:
-#   Jesús Perea
-#   Samuel Sánchez
-#   Juan Manuel Gómez
-#   Rafaín Rodríguez
-#
-# 13-nov-2018
-
 from __future__ import division
 from __future__ import print_function
 from tabulate import tabulate
 from prettytable import PrettyTable
 from texttable import Texttable
 from random import randint
+from math import log10
 import time
 aleatoria = 0
 
@@ -200,13 +191,13 @@ def bubbleSort(lis):
 
   n = len(lis)
   for i in range(n-1):
-    for i in range(n-1):
+    for j in range(n-i-1):
       comp += 1
-      if (lis[i] > lis[i+1]):
+      if (lis[j] > lis[j+1]):
         inter += 1
-        prob = lis[i+1]
-        lis[i+1] = lis[i]
-        lis[i] = prob
+        prob = lis[j+1]
+        lis[j+1] = lis[j]
+        lis[j] = prob
     if (aleatoria == 1):
       print(lis)
   return (comp, inter, despl)
@@ -293,6 +284,8 @@ def main():
         print("Introduzca una opción válida")
         aleatoria = 0
 
+  n = len(lista)
+
   #Corrida para Bubble Sort
   table = PrettyTable(["", 'Comparaciones', 'Intercambios','Desplazamientos', 'Tiempo'])
   
@@ -301,7 +294,7 @@ def main():
     print("\n**********************************************************\n")
     print("\nBubble Sort: \n")
 
-  lisBS = list(lista) 
+  lisBS = list(lista)
   start = time.time()
   compBS, interBS, desplBS = bubbleSort(lisBS)
   end = time.time()
@@ -309,8 +302,8 @@ def main():
   if (aleatoria == 1):
     print("\n")
     tableCM = Texttable()
-    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])  
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                  #AQUI VA JUAAAN ENTRE LOS ´´
+    tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos']) 
+    tableCM.add_row(['Notacion 0',['O(n^2) = ', n**2], [0, n**2],0])      
     tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
     print(tableCM.draw())
     
@@ -336,8 +329,8 @@ def main():
     print("\n")
     tableCM = Texttable()
     tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                 #AQUI VA JUAAAN ENTRE LOS ´´
-    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    tableCM.add_row(['Notacion 0',['O(n^2) = ', n**2], [n, n],0])          
+    tableCM.add_row(['Realizadas',str(compSS),str(interSS),str(desplSS)])
     print(tableCM.draw())
     
     print("Tiempo de ejecución: " + str(end-start)+"\n")
@@ -360,8 +353,8 @@ def main():
     print("\n")
     tableCM = Texttable()
     tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                   #AQUI VA JUAAAN ENTRE LOS ´´
-    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    tableCM.add_row(['Notacion 0',['O(n^2) = ', n**2], 0 ,[1, n**2]])      
+    tableCM.add_row(['Realizadas',str(compIS),str(interIS),str(desplIS)])
     print(tableCM.draw())
     
     print("Tiempo de ejecución: " + str(end-start)+"\n")
@@ -383,8 +376,8 @@ def main():
     print("\n")
     tableCM = Texttable()
     tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                  #AQUI VA JUAAAN ENTRE LOS ´´
-    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    tableCM.add_row(['Notacion 0',['O(nlogn) = ', n * log10(n)], [n * log10(n) , n * log10(n)],0])               
+    tableCM.add_row(['Realizadas',str(compMS),str(interMS),str(desplMS)])
     print(tableCM.draw())
     
     print("Tiempo de ejecución: " + str(end-start)+"\n")
@@ -407,8 +400,8 @@ def main():
     print("\n")
     tableCM = Texttable()
     tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                          #AQUI VA JUAAAN ENTRE LOS ´´
-    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    tableCM.add_row(['Notacion 0',['O(nlogn) = ', n * log10(n)], [n * log10(n) , n * log10(n)],0])            
+    tableCM.add_row(['Realizadas',str(compHS),str(interHS),str(desplHS)])
     print(tableCM.draw())
 
     print("Tiempo de ejecución: " + str(end-start)+"\n")
@@ -431,8 +424,8 @@ def main():
     print("\n")
     tableCM = Texttable()
     tableCM.add_row(["",'Comparaciones','Intercambios','Desplazamientos'])
-    tableCM.add_row(['Notacion 0\nComplejidad',' ',' ',' '])                    #AQUI VA JUAAAN ENTRE LOS ´´
-    tableCM.add_row(['Realizadas',str(compBS),str(interBS),str(desplBS)])
+    tableCM.add_row(['Notacion 0',['O(n^2) = ', n**2], [n * log10(n), n**2] ,0]) 
+    tableCM.add_row(['Realizadas',str(compQS),str(interQS),str(desplQS)])
     print(tableCM.draw())
 
     print("Tiempo de ejecución: " + str(end-start)+"\n")
